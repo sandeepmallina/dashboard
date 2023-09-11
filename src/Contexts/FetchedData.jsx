@@ -76,7 +76,7 @@ const FetchedData = ({ children }) => {
 
     // Calculate the average
     const average = sum / responseData.length;
-    console.log(average, "hello");
+    // console.log(average, "hello");
     return average;
   };
 
@@ -150,7 +150,7 @@ const FetchedData = ({ children }) => {
     // Iterate through the data and add unique, non-empty end years to the Set
     responseData.forEach((item) => {
       let endYear = parseInt(item.end_year);
-      console.log(typeof endYear);
+      // console.log(typeof endYear);
       // Check if endYear is a number and not NaN before adding to the set
       if (!isNaN(endYear)) {
         uniqueNonEmptyEndYears.add(endYear);

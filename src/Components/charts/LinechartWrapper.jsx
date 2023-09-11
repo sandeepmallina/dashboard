@@ -12,9 +12,9 @@ const LinechartWrapper = () => {
     value: year,
     label: year,
   }));
-  {
-    console.log(getYearvsIntensity());
-  }
+  // {
+  //   console.log(getYearvsIntensity());
+  // }
   const customStyles = {
     control: (provided) => ({
       ...provided,
@@ -37,7 +37,7 @@ const LinechartWrapper = () => {
   useEffect(() => {
     const fetchDataAndSetCount = async () => {
       const Data = getYearvsIntensity();
-      console.log(Data, "hi");
+      // console.log(Data, "hi");
       setUnfiltredData(Data);
     };
 

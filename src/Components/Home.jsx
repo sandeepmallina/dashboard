@@ -63,9 +63,9 @@ function Home() {
     fetchDataAndSetCount();
   }, [getCountOfCountries]);
 
-  {
-    console.log(piedata, "piedata");
-  }
+  // {
+  //   console.log(piedata, "piedata");
+  // }
   const regionOptions = [...new Set(regionData.map((item) => item.region))]
     .map((item) => ({
       value: item,
@@ -174,7 +174,7 @@ function Home() {
 
     if (selectedOption) {
       const region = selectedOption.value;
-      console.log(regionData, "regions");
+      // console.log(regionData, "regions");
       const filteredData = regionData.filter((item) => item.region === region);
       setFiltredPieData(filteredData);
     } else {
