@@ -53,7 +53,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
 .menu-icon {
   display: none;
 }
@@ -94,8 +93,18 @@ body {
 }
 
 .sidebar-list-item {
-  padding: 20px 20px 20px 20px;
+  width: 220px;
+  height: 60px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  padding: 10px 10px 10px;
   font-size: 18px;
+}
+.sidebar-list-item a {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .sidebar-list-item:hover {
@@ -310,7 +319,7 @@ body {
 /* Extra Small <= 576px */
 
 @media screen and (max-width: 576px) {
-  .hedaer-left {
+  .header-left {
     display: none;
   }
 }

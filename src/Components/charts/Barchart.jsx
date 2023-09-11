@@ -1,6 +1,5 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import * as d3 from "d3";
-import { StateContext } from "../../Contexs/FetchedData";
 const MARGIN = { top: 30, right: 30, bottom: 30, left: 30 };
 const BAR_PADDING = 0.3;
 export const Barchart = ({ width, height, data }) => {

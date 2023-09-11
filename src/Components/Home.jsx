@@ -3,8 +3,9 @@ import { BsArrowUp, BsArrowDown, BsFillBellFill } from "react-icons/bs";
 import { MdLocationPin } from "react-icons/md";
 import { FaMapMarked } from "react-icons/fa";
 import { TbReportSearch } from "react-icons/tb";
+import { GrResources } from "react-icons/gr";
 import Select from "react-select";
-import { StateContext } from "../Contexs/FetchedData";
+import { StateContext } from "../Contexts/FetchedData";
 import { Barchart } from "./charts/Barchart";
 import { Linechart } from "./charts/Linechart";
 import Piechart from "./charts/Piechart";
@@ -23,10 +24,12 @@ function Home() {
     calculateSectorLikelihood,
     calculateSectorAndRegionLikelihood,
     responseData,
+    getNoofSources,
   } = useContext(StateContext);
   const [count, setCount] = useState(0);
   const [regcount, setRegcount] = useState(0);
   const [avgIntensity, setAvgIntensity] = useState(0);
+  const [countofsources, setCountofSources] = useState(0);
   const [selectGroup, setSelectedGroup] = useState("Top10");
   const [filteredData, setFilteredData] = useState([]);
   const [lineselectGroup, setLineSelectedGroup] = useState(" ");
@@ -45,6 +48,8 @@ function Home() {
       setRegcount(RegionCount);
       const AvgIntensity = getAvgIntensity();
       setAvgIntensity(AvgIntensity);
+      const sourceCount = getNoofSources();
+      setCountofSources(sourceCount);
       const Data = getIntensityVsCountry();
       setData(Data);
       const LineData = getYearvsIntensity();
@@ -221,10 +226,10 @@ function Home() {
         </div>
         <div className="card">
           <div className="card-inner">
-            <h3>ALERTS</h3>
-            <BsFillBellFill className="card_icon" />
+            <h3>No.of Sources</h3>
+            <GrResources className="card_icon" />
           </div>
-          <h1>42</h1>
+          <h1>{countofsources}</h1>
         </div>
       </div>
 

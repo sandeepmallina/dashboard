@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Scatterplot } from "./Scatterplot";
-import { StateContext } from "../../../Contexs/FetchedData";
+import { StateContext } from "../../../Contexts/FetchedData";
 import Select from "react-select";
 
 function ScattercartWrapper({ width, height }) {

@@ -1,11 +1,10 @@
 import { useState } from "react";
 
 import "./App.css";
-import FetchedData from "./Contexs/FetchedData";
+import FetchedData from "./Contexts/FetchedData";
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
 import Home from "./Components/Home";
-import { data } from "./Components/charts/data";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BarchartWrapper from "./Components/charts/BarchartWrapper";
 import LinechartWrapper from "./Components/charts/LinechartWrapper";

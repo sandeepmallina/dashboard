@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StateContext } from "../../Contexs/FetchedData";
+import { StateContext } from "../../Contexts/FetchedData";
 import { Linechart } from "./Linechart";
 import Select from "react-select";
 const LinechartWrapper = () => {

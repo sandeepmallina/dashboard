@@ -119,6 +119,10 @@ const FetchedData = ({ children }) => {
 
     return result;
   };
+  const getNoofSources = () => {
+    const uniqueSources = [...new Set(responseData.map((item) => item.source))];
+    return uniqueSources.length;
+  };
   const getYearvsIntensity = () => {
     const intensityByYear = responseData
       .filter((item) => item.end_year !== "") // Filter out items with empty end_year
@@ -234,6 +238,7 @@ const FetchedData = ({ children }) => {
         calculateSectorAndRegionLikelihood,
         sharedData,
         setSharedData,
+        getNoofSources,
       }}
     >
       {/* Your components can be rendered here */}

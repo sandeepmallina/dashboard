@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StateContext } from "../../Contexs/FetchedData";
+import { StateContext } from "../../Contexts/FetchedData";
 import { Barchart } from "./Barchart";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import Select from "react-select";
