@@ -12,7 +12,7 @@ const FetchedData = ({ children }) => {
       .then((data) => {
         if (Array.isArray(data)) {
           // Store the data in Local Storage
-          setItem("responseData", JSON.stringify(data));
+          localStorage.setItem("responseData", JSON.stringify(data));
           setResponsedata(data);
         }
       })
