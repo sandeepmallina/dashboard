@@ -1,16 +1,18 @@
-const { MongoClient } = require("mongodb");
+// const { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
 require("dotenv").config();
 export const handler = async (event) => {
   try {
     // Replace with your MongoDB connection string
-    const uri = process.env.MONGODB_URI;
+    const uri =
+      "mongodb+srv://admin:admin1234@nodeapi.mymkg3q.mongodb.net/?retryWrites=true&w=majority";
 
     const client = new MongoClient(uri, { useNewUrlParser: true });
 
     await client.connect();
 
-    const database = client.db(process.env.MONGODB_DATABASE);
-    const collection = database.collection(process.env.MONGODB_COLLECTION);
+    const database = client.db("data");
+    const collection = database.collection("variables");
 
     const data = await collection.find({}).toArray();
 
