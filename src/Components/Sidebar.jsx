@@ -60,15 +60,6 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
         </>
       ),
     },
-    {
-      id: 6,
-      link: "Setting",
-      child: (
-        <>
-          <BsFillGearFill className="icon" /> Setting
-        </>
-      ),
-    },
   ];
   return (
     <aside
