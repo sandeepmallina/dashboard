@@ -12,6 +12,9 @@ const LinechartWrapper = () => {
     value: year,
     label: year,
   }));
+  {
+    console.log(getYearvsIntensity());
+  }
   const customStyles = {
     control: (provided) => ({
       ...provided,
@@ -66,7 +69,7 @@ const LinechartWrapper = () => {
           options={options}
           onChange={(selectedOption) => setSelectedGroup(selectedOption.value)}
         />
-        {selectGroup === "2016" ? (
+        {selectGroup === 2016 ? (
           <h3 className="warning-text">No data for 2016 </h3>
         ) : (
           <Linechart

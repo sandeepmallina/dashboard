@@ -20,7 +20,7 @@ export const Linechart = ({ width, height, data }) => {
   // X axis
   const [xMin, xMax] = d3.extent(data, (d) => d.intensity);
   const xScale = useMemo(() => {
-    return d3.scaleLinear().domain([0, 3500]).range([0, boundsWidth]);
+    return d3.scaleLinear().domain([500, 700]).range([0, boundsWidth]);
   }, [data, width]);
 
   // Render the X and Y axis using d3.js, not react

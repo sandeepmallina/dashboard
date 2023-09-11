@@ -7,7 +7,7 @@ const FetchedData = ({ children }) => {
   const [sharedData, setSharedData] = useState([]);
 
   const fetchData = () => {
-    fetch("http://localhost:3000/data") // Replace with the actual backend URL
+    fetch("http://localhost:8888/.netlify/functions/server") // Replace with the actual backend URL
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -38,10 +38,14 @@ const FetchedData = ({ children }) => {
     responseData
       .filter((item) => item.intensity !== null && item.country !== "")
       .forEach((item) => {
+        let intensity = parseInt(item.intensity);
+        if (isNaN(intensity)) {
+          return;
+        }
         if (countryIntensityMap[item.country]) {
-          countryIntensityMap[item.country] += item.intensity;
+          countryIntensityMap[item.country] += intensity;
         } else {
-          countryIntensityMap[item.country] = item.intensity;
+          countryIntensityMap[item.country] = intensity;
         }
       });
     return Object.entries(countryIntensityMap).map(([country, intensity]) => ({
@@ -60,13 +64,22 @@ const FetchedData = ({ children }) => {
     return uniqueRegions.length;
   };
   const getAvgIntensity = () => {
-    const sum = responseData.reduce((total, item) => total + item.intensity, 0);
+    const sum = responseData.reduce((total, item) => {
+      let intensity = parseInt(item.intensity);
+      // Check if intensity is a number
+      if (!isNaN(intensity)) {
+        return total + intensity;
+      } else {
+        return total;
+      }
+    }, 0);
 
     // Calculate the average
     const average = sum / responseData.length;
-    // console.log(average);
+    console.log(average, "hello");
     return average;
   };
+
   const getLastTenCountriesByIntensity = (data) => {
     const filteredData = data.filter(
       (item) => item.intensity !== null && item.country !== ""
@@ -115,7 +128,7 @@ const FetchedData = ({ children }) => {
         const year = addedDate.getFullYear();
 
         // Sum the intensity by year
-        acc[year] = (acc[year] || 0) + item.intensity;
+        acc[year] = (acc[year] || 0) + parseInt(item.intensity);
 
         return acc;
       }, {});
@@ -132,18 +145,19 @@ const FetchedData = ({ children }) => {
 
     // Iterate through the data and add unique, non-empty end years to the Set
     responseData.forEach((item) => {
-      const endYear = item.end_year;
-      if (endYear && endYear.trim() !== "") {
-        uniqueNonEmptyEndYears.add(endYear.trim());
+      let endYear = parseInt(item.end_year);
+      console.log(typeof endYear);
+      // Check if endYear is a number and not NaN before adding to the set
+      if (!isNaN(endYear)) {
+        uniqueNonEmptyEndYears.add(endYear);
       }
     });
+    let sortedEndYears = Array.from(uniqueNonEmptyEndYears).sort(
+      (a, b) => a - b
+    );
 
-    // Convert the Set back to an array and sort it
-    const sortedUniqueNonEmptyEndYears = Array.from(
-      uniqueNonEmptyEndYears
-    ).sort((a, b) => a - b);
-
-    return sortedUniqueNonEmptyEndYears;
+    // Now uniqueNonEmptyEndYears contains the unique, non-empty end years
+    return sortedEndYears; // Convert Set to an array if needed
   };
 
   const calculateSectorLikelihood = () => {
@@ -153,7 +167,7 @@ const FetchedData = ({ children }) => {
       .filter((item) => item.region && item.sector)
       .forEach((item) => {
         const sector = item.sector;
-        const likelihood = item.likelihood;
+        const likelihood = parseInt(item.likelihood);
 
         sectorLikelihoods[sector] =
           (sectorLikelihoods[sector] || 0) + likelihood;
@@ -183,7 +197,7 @@ const FetchedData = ({ children }) => {
       .forEach((item) => {
         const sector = item.sector;
         const region = item.region;
-        const likelihood = item.likelihood;
+        const likelihood = parseInt(item.likelihood);
 
         const key = `${sector} - ${region}`;
         sectorRegionLikelihoods[key] =
