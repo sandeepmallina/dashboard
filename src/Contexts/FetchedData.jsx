@@ -7,7 +7,8 @@ const FetchedData = ({ children }) => {
   const [sharedData, setSharedData] = useState([]);
 
   const fetchData = () => {
-    fetch("http://localhost:8888/.netlify/functions/server") // Replace with the actual backend URL
+    // fetch("http://localhost:8888/.netlify/functions/server") // Replace with the actual backend URL
+    fetch("https://react-dashboard-101.netlify.app/.netlify/functions/server")
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data)) {
