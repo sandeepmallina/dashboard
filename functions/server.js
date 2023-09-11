@@ -1,6 +1,6 @@
 // const { MongoClient } = require("mongodb");
 import { MongoClient } from "mongodb";
-require("dotenv").config();
+// require("dotenv").config();
 export const handler = async (event) => {
   try {
     // Replace with your MongoDB connection string
