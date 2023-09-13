@@ -4,15 +4,14 @@ import { MongoClient } from "mongodb";
 export const handler = async (event) => {
   try {
     // Replace with your MongoDB connection string
-    const uri =
-      "mongodb+srv://admin:admin1234@nodeapi.mymkg3q.mongodb.net/?retryWrites=true&w=majority";
+    const uri = MONGO_URI;
 
     const client = new MongoClient(uri, { useNewUrlParser: true });
 
     await client.connect();
 
-    const database = client.db("data");
-    const collection = database.collection("variables");
+    const database = client.db(MONGO_DATABASE);
+    const collection = database.collection(MONGO_COLLECTION);
 
     const data = await collection.find({}).toArray();
 
